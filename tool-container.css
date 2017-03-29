@@ -70,6 +70,6 @@ main {
 }
 
 .full {
-  width: 100%;
+  width: calc(100% + 0.75rem);
   height: 100vh;
 }
