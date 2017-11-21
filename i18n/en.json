@@ -3,5 +3,6 @@
     "cssa-load":  "Open",
     "cssa-save":  "Save File",
     "cssa-save-template": "Save Template",
-    "cssa-export": "Export"
+    "cssa-export": "Export",
+    "cssa-projects": "Projects"
 }
