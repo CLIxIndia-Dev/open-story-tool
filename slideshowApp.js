@@ -18,22 +18,22 @@ window.onload = function () {
         buttons[i].title = buttons[i].innerText
     }
     
-    // Adds ARIA roles to some elements for accessibility
-    function addARIARole(strID, strRole)
-    {
-        // Find the element to add a role property to
-        var objElement = document.getElementById(strID);
-
-        if (objElement)
-        {
-            // Add the role property to the element
-            objElement.setAttribute('role', strRole);
-        }
-    }
-    addARIARole('content', 'main');
-	addARIARole('nav', 'navigation');
-	addARIARole('searchform', 'search');
-	addARIARole('ads', 'banner');
+//    // Adds ARIA roles to some elements for accessibility
+//    function addARIARole(strID, strRole)
+//    {
+//        // Find the element to add a role property to
+//        var objElement = document.getElementById(strID);
+//
+//        if (objElement)
+//        {
+//            // Add the role property to the element
+//            objElement.setAttribute('role', strRole);
+//        }
+//    }
+//    addARIARole('content', 'main');
+//	addARIARole('nav', 'navigation');
+//	addARIARole('searchform', 'search');
+//	addARIARole('ads', 'banner');
     
     // Experimental block for hiding inputs which aren't available
 //    var videoButtonDiv = document.getElementById('videoButtonDiv')
