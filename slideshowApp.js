@@ -18,19 +18,31 @@ window.onload = function () {
         buttons[i].title = buttons[i].innerText
     }
     
-//    // Adds ARIA roles to some elements for accessibility
-//    function addARIARole(strID, strRole)
-//    {
-//        // Find the element to add a role property to
-//        var objElement = document.getElementById(strID);
-//
-//        if (objElement)
-//        {
-//            // Add the role property to the element
-//            objElement.setAttribute('role', strRole);
-//        }
-//    }
-//    addARIARole('content', 'main');
+    // Adds ARIA roles to some elements for accessibility
+    function addARIARole(strID, strRole)
+    {
+        // Find the element to add a role property to
+        var objElement = document.getElementById(strID);
+
+        if (objElement)
+        {
+            // Add the role property to the element
+            objElement.setAttribute('role', strRole);
+        }
+    }
+    addARIARole('content', 'main');
+    addARIARole('showView', 'application')
+    
+    addARIARole('fileControls', 'menu');
+    addARIARole('newShowBtn', 'menuitem');
+    addARIARole('loadShowBtn', 'menuitem');
+    addARIARole('saveShowBtn', 'menuitem');
+    addARIARole('saveTemplateBtn', 'menuitem');
+
+    addARIARole('captionInput', 'textbox')
+    addARIARole('durationInput', 'timer') //not sure
+    
+    
 //	addARIARole('nav', 'navigation');
 //	addARIARole('searchform', 'search');
 //	addARIARole('ads', 'banner');
