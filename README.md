@@ -21,7 +21,7 @@ To have a default project load, pass a "file" parameter.
 To have a non-default gallery load, pass a "gallery" parameter.  
 `gallery=birds`
 #### API 
-To change where data is logged to, you can pass it an "api" paramter  .
+To change where data is logged to, you can pass it an "api" parameter.  
 `api=/some/url/here`
 
 The default is QBank's API located at /api/v1/logging/genericlog and specifics regarding what specific data is collected can be found at:  
