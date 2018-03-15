@@ -20,7 +20,7 @@ To have a default project load, pass a "file" parameter.
 #### Gallery
 To have a non-default gallery load, pass a "gallery" parameter.  
 `gallery=birds`
-#### API 
+#### API
 To change where data is logged to, you can pass it an "api" parameter.  
 `api=/some/url/here`
 
@@ -32,3 +32,9 @@ https://docs.google.com/spreadsheets/d/1O6nZ_L8-I52smSw6fER8qIC6kqHZ0xwvRmeaTN8r
 ### Embedding
 Open Story can be embedded into an iframe, as outlined in the embedding document:  
 https://docs.google.com/document/d/1R-tK3rZhi_YPH_x-R9C14jTzU_B0wmgmF4UTJL6PDRU/
+
+# Third-party Licenses and Copyright
+Please check `NOTICES.md` for more detailed information about third-party libraries and their licenses.
+
+## Image Copyrights
+All images located in the `/images` directory are in the public domain and sourced from https://www.publicdomainpictures.net.
