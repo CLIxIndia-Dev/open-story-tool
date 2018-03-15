@@ -4,5 +4,7 @@
     "cssa-save":  "Save File",
     "cssa-save-template": "Save Template",
     "cssa-export": "Export",
-    "cssa-projects": "Projects"
+    "cssa-load": "Load",
+    "cssa-save": "Save",
+    "cssa-projects": "Remote Projects"
 }

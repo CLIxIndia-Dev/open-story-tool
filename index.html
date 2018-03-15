@@ -31,12 +31,18 @@
         <div id="content">
 
             <div class="controls" id="fileControls">
-                <button id="newShowBtn" type="button"><i class="fa fa-file-text-o"></i><span data-i18n="cssa-new">New File</span></button>
-                <button id="loadShowBtn" type="button"><i class="fa fa-folder-open"></i><span data-i18n="cssa-load">Open</span></button>
-                <button id="saveShowBtn" type="button"><i class="fa fa-floppy-o"></i><span data-i18n="cssa-save">Save File</span></button>
-                <button id="saveTemplateBtn" type="button"><i class="fa fa-floppy-o"></i><i class="fa fa-lock"></i><span data-i18n="cssa-save-template">Save Template</span></button>
-                <button id="exportShowBtn" type="button" style="display:none"><i class="fa fa-sign-out"></i><span data-i18n="cssa-export">Export</span></button>
-<!--                <button id="projectsShowBtn" type="button" ><i class="fa fa-sign-out"></i><span data-i18n="cssa-projects">Projects</span></button>-->
+                <div id="localControlsCtr" class="fa">
+                    <button id="newShowBtn" type="button"><i class="fa fa-file-text-o"></i><span data-i18n="cssa-new">New File</span></button>
+                    <button id="loadShowBtn" type="button"><i class="fa fa-folder-open"></i><span data-i18n="cssa-load">Open</span></button>
+                    <button id="saveShowBtn" type="button"><i class="fa fa-floppy-o"></i><span data-i18n="cssa-save">Save File</span></button>
+                    <button id="saveTemplateBtn" type="button"><i class="fa fa-floppy-o"></i><i class="fa fa-lock"></i><span data-i18n="cssa-save-template">Save Template</span></button>
+                    <button id="exportShowBtn" type="button" style="display:none"><i class="fa fa-sign-out"></i><span data-i18n="cssa-export">Export</span></button>
+                </div>
+                <div class="fa" id="projectsCtr">
+                    <button id="projectsLoadBtn" type="button" ><i class="fa fa-sign-out"></i><span data-i18n="cssa-load">Load</span></button>
+                    <button id="projectsSaveBtn" type="button" ><i class="fa fa-sign-out"></i><span data-i18n="cssa-save">Save</span></button>
+                    <span data-i18n="cssa-projects" id="projectsLabel">Remote Projects</span>
+                </div>
             </div>
 
             <div id="showView">
@@ -114,8 +120,7 @@
                         <button id="playShowBtn" type="button" style="vertical-align:middle">Play <i class="fa fa-play" style="vertical-align:middle;"></i></button>
                     </div>
                 </div>
-            </div>
-
+            </div>   
         </div>
 
     </div>
