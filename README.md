@@ -57,6 +57,8 @@ That starting file must be in the same folder as the index.html file. If you don
 
 From this example, replace birds (the name of the gallery) with the name of the gallery you want to be available to the students. This must be a gallery that exists in the OpenStoryTool/images folder. If you don’t include the gallery parameter, Open Story will use the default gallery.
 
+Please see the Open Story Tool GitHub wiki for more information.
+
 
 # Third-party Licenses and Copyright
 Please check `NOTICES.md` for more detailed information about third-party libraries and their licenses.
