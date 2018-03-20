@@ -19,8 +19,7 @@
             "double"
         ],
         "semi": [
-            "error",
-            "never"
+            "warn"
         ],
         "no-console": [
             "warn"
