@@ -170,6 +170,7 @@ var Slideshow;
                   data: event
                 };
                 xhr.open('POST', this.remoteLocation, true);
+                xhr.setRequestHeader("x-api-proxy", this.session)
                 xhr.setRequestHeader("Content-Type", "application/json");
                 xhr.send(JSON.stringify(payload));
             }
