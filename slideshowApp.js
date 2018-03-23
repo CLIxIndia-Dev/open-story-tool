@@ -1682,7 +1682,9 @@ var Slideshow;
                 if (c.indexOf(name) == 0)
                     return c.substring(name.length, c.length);
             }
-            return "";
+            // Let's be consistent with behavior from RKR...no string
+            //   returned if not found.
+            console.log('no uuid found');
         };
         Utils.toHTML = function (val) {
             return val.replace(/(?:\r\n|\r|\n)/g, '<br>');
