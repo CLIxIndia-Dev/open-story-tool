@@ -3,21 +3,21 @@
 window.onload = function () {
     var el = document.getElementById("content");
     this.slideApp = new Slideshow.SlideshowApp(el);
-    
+
     // Adds a title to each button for accessibility
     var buttons = document.getElementsByTagName('button')
     for(i = 0;i < buttons.length; i++)
     {
         buttons[i].title = buttons[i].innerText
     }
-    
+
     // Adds a title to each button for accessibility
     var buttons = document.getElementsByTagName('button')
     for(i = 0;i < buttons.length; i++)
     {
         buttons[i].title = buttons[i].innerText
     }
-    
+
     // Adds ARIA roles to some elements for accessibility
     function addARIARole(strID, strRole)
     {
@@ -32,7 +32,7 @@ window.onload = function () {
     }
     addARIARole('content', 'main');
     addARIARole('showView', 'application')
-    
+
     addARIARole('fileControls', 'menu');
     addARIARole('newShowBtn', 'menuitem');
     addARIARole('loadShowBtn', 'menuitem');
@@ -41,12 +41,12 @@ window.onload = function () {
 
     addARIARole('captionInput', 'textbox')
     addARIARole('durationInput', 'timer') //not sure
-    
-    
+
+
 //	addARIARole('nav', 'navigation');
 //	addARIARole('searchform', 'search');
 //	addARIARole('ads', 'banner');
-    
+
     // Experimental block for hiding inputs which aren't available
 //    var videoButtonDiv = document.getElementById('videoButtonDiv')
 //    var audioButtonDiv = document.getElementById('audioButtonDiv')
@@ -73,7 +73,7 @@ window.onload = function () {
 //    console.log("enumerateDevices() not supported.");
 //    }
     ///////////////////////////////////////////////////////////
- 
+
 };
 var Slideshow;
 (function (Slideshow) {
@@ -145,7 +145,11 @@ var Slideshow;
         }
         Data.prototype.startSession = function () {
             try {
-                this.session = Slideshow.Utils.getCookie("session_uuid");
+                this.session = Slideshow.Utils.getCookie("session_id");
+                if (this.session.length === 0) {
+                  // probably wont ever be needed but this is the legacy way
+                  this.session = Slideshow.Utils.getCookie("session_uuid");
+                }
             }
             catch (e) {
                 console.log("Cannot get session id cookie");
@@ -162,9 +166,12 @@ var Slideshow;
             this.events.push(event);
             if (this.session != "" && this.remoteLocation != "") {
                 var xhr = new XMLHttpRequest();
+                var payload = {
+                  data: event
+                };
                 xhr.open('POST', this.remoteLocation, true);
                 xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.send(JSON.stringify(event));
+                xhr.send(JSON.stringify(payload));
             }
         };
         return Data;
@@ -592,20 +599,24 @@ var Slideshow;
             this.state = 0 /* Init */;
             this.show = new Slideshow.Show();
             this.ui = new Slideshow.UI(element);
-            
-            
+
+
             this.data = new Slideshow.Data();
-            this.data.remoteLocation = "/api/appdata/";
+            this.URLparams = new URLSearchParams(location.search);
+            this.api = (this.URLparams.get("api") ||
+              `https://${window.location.hostname}:8080/api/v1/logging/genericlog`);
+            this.data.remoteLocation = this.api;
+            // this.data.remoteLocation = "/api/appdata/";
             this.data.startSession();
-            
-            
+
+
             var startParams = {};
             var startingFile = Slideshow.Utils.getUrlVars()["file"];
             if (startingFile != null && startingFile != "") {
                 this.loadShowURL(startingFile);
                 startParams["filename"] = startingFile;
             }
-        img_Folder = Slideshow.Utils.getUrlVars()["gallery"];            
+        img_Folder = Slideshow.Utils.getUrlVars()["gallery"];
         this.imgFolder = Slideshow.Utils.getUrlVars()["gallery"];
             if (this.imgFolder == undefined) { // default for when no gallery specified
                 this.imgFolder = "";

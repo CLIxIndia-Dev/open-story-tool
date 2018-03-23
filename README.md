@@ -24,7 +24,18 @@ To have a non-default gallery load, pass a "gallery" parameter.
 To change where data is logged to, you can pass it an "api" parameter.  
 `api=/some/url/here`
 
-The default is QBank's API located at /api/v1/logging/genericlog and specifics regarding what specific data is collected can be found in the the Open Story Tool GitHub wiki. 
+The default is QBank's API located at `:8080/api/v1/logging/genericlog` and specifics regarding what specific data is collected can be found in the the Open Story Tool GitHub wiki. Data is sent as part of a payload with:
+
+```
+{
+  data: {
+    app_name: "OpenStory",
+    session_id: "123",
+    event_type: "slide_duped", // depends on the actual event
+    params: { // see documentation for any included parameters }
+  }
+}
+```
 
 
 ### Embedding
