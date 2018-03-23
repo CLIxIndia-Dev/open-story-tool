@@ -31,7 +31,8 @@ The default is QBank's API located at `:8080/api/v1/logging/genericlog` and spec
   data: {
     app_name: "OpenStory",
     session_id: "123",
-    event_type: "slide_duped" // depends on the actual event
+    event_type: "slide_duped", // depends on the actual event
+    params: { // see documentation for any included parameters }
   }
 }
 ```
