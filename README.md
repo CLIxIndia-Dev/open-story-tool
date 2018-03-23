@@ -37,6 +37,12 @@ The default is QBank's API located at `:8080/api/v1/logging/genericlog` and spec
 }
 ```
 
+To change the cookie name (for where to find a user ID or session ID), pass in the `cookieName` parameter. The defaults that are searched for are `session_id`, `session_uuid`, and `user_id` (in that order). The first cookie found is used.
+
+Example:
+
+`cookieName=userId`
+
 
 ### Embedding
 Open Story can be embedded into an iframe, as outlined in the embedding document:  
