@@ -145,10 +145,19 @@ var Slideshow;
         }
         Data.prototype.startSession = function () {
             try {
-                this.session = Slideshow.Utils.getCookie("session_id");
-                if (this.session.length === 0) {
-                  // probably wont ever be needed but this is the legacy way
-                  this.session = Slideshow.Utils.getCookie("session_uuid");
+                var urlParams = new URLSearchParams(location.search);
+                var cookiesToTry = [];
+                if (urlParams.get('cookieName')) {
+                  cookiesToTry.push(urlParams.get('cookieName'));
+                }
+                // because we have lots of potential integrations...yuck code smell!
+                cookiesToTry = cookiesToTry.concat(['session_id', 'session_uuid', 'user_id']);
+                for (var i=0; i<cookiesToTry.length; i++) {
+                  var session = Slideshow.Utils.getCookie(cookiesToTry[i]);
+                  if (session.length !== 0) {
+                    this.session = session;
+                    break;
+                  }
                 }
             }
             catch (e) {
