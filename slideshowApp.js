@@ -154,7 +154,7 @@ var Slideshow;
                 cookiesToTry = cookiesToTry.concat(['session_id', 'session_uuid', 'user_id']);
                 for (var i=0; i<cookiesToTry.length; i++) {
                   var session = Slideshow.Utils.getCookie(cookiesToTry[i]);
-                  if (session.length !== 0) {
+                  if (typeof session !== "undefined") {
                     this.session = session;
                     break;
                   }
