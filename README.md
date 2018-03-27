@@ -64,7 +64,7 @@ To change where data is logged to, you can pass it an `api` parameter
 For example, configuring the logging endpoint to `/foo` as below:
 
 ```
-https://www.example.com/runkittyrun?api=/foo
+https://www.example.com/openstorytool?api=/foo
 ```
 
 Would attempt to send the application log data to:
