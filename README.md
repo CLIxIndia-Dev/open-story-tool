@@ -13,18 +13,71 @@ A "t"emplate file. Permissions are unable to be changed but content can be freel
 #### cssv
 a "v"ideo file. This kind of slideshow cannot be edited at all and is intended for viewing only.
 
-### Query Parameters
-#### Default Project
-To have a default project load, pass a "file" parameter.  
-`file=birds.csst`
-#### Gallery
-To have a non-default gallery load, pass a "gallery" parameter.  
-`gallery=birds`
-#### API
-To change where data is logged to, you can pass it an "api" parameter.  
-`api=/some/url/here`
+### Configurations
+OpenStoryTool has four settings to configure:
 
-The default is QBank's API located at `:8080/api/v1/logging/genericlog` and specifics regarding what specific data is collected can be found in the the Open Story Tool GitHub wiki. Data is sent as part of a payload with:
+* Project to load
+* Gallery to load
+* Logging API
+* Cookie name
+
+Each of these can be set in the URL via CGI parameters, like:
+
+```
+https://www.example.com/openstorytool?file=birds.csst
+```
+
+More details are given below in each subsection.
+
+#### Project to load
+To have the application render with a different project on page load, you can pass a `file` parameter, `file=birds.csst`.
+
+For example, passing in the following:
+
+```
+https://www.example.com/openstorytool?file=birds.csst
+```
+
+Would show the page with the `birds` project already loaded, for students to work with.
+
+#### Gallery to load
+To have a non-default gallery load when the application is initially shown, pass a `gallery` parameter, `gallery=birds`.
+
+For example, passing in the following:
+
+```
+https://www.example.com/openstorytool?gallery=birds
+```
+
+Would make the entire `birds` gallery available to students upon page load.
+
+You can combine the above settings into a single URL, like the following:
+
+```
+https://www.example.com/openstorytool?project=birds.csst&gallery=birds
+```
+
+#### Logging API
+To change where data is logged to, you can pass it an `api` parameter  
+`api=/some/path/here`
+
+For example, configuring the logging endpoint to `/foo` as below:
+
+```
+https://www.example.com/runkittyrun?api=/foo
+```
+
+Would attempt to send the application log data to:
+
+```
+https://www.example.com/foo
+```
+
+You will be expected to have some server-side API at `/foo` that handles data collection.
+
+If no `api` parameter is included, the application will attempt to log to QBank's API located at `https://<current hostname>:8080/api/v1/logging/genericlog`. Details regarding what specific data is collected can be found in the OpenStoryTool [GitHub wiki](https://github.com/CLIxIndia-Dev/open-story-tool/wiki/OST-Logging-Information).
+
+Data is sent as part of a payload with:
 
 ```
 {
@@ -37,12 +90,28 @@ The default is QBank's API located at `:8080/api/v1/logging/genericlog` and spec
 }
 ```
 
-To change the cookie name (for where to find a user ID or session ID), pass in the `cookieName` parameter. The defaults that are searched for are `session_id`, `session_uuid`, and `user_id` (in that order). The first cookie found is used.
+You can combine this configuration with the others through the URL:
 
-Example:
+```
+https://www.example.com/openstorytool?api=/foo&project=birds.csst&gallery=birds
+```
 
-`cookieName=userId`
+#### Cookie name
+OpenStoryTool collects the current, logged-in user name or ID from a cookie in the client browser. You can configure the name of the cookie it looks for with the `cookieName` parameter.
 
+```
+https://www.example.com/openstorytool?cookieName=myUserIdCookie
+```
+
+The defaults that are searched for are `session_id`, `session_uuid`, and `user_id` (in that order). The first cookie found is used.
+
+This user ID is included as the `session_id` parameter of the data payload sent in the logging messages, as well as in the `x-api-proxy` header.
+
+Similarly, you can include this setting along with the others by combining them in the URL:
+
+```
+https://www.example.com/openstorytool?cookieName=myUserIdCookie&project=birds.csst&gallery=birds&api=/foo
+```
 
 ### Embedding
 Open Story can be embedded into an iframe, as outlined in the embedding document:  
@@ -62,11 +131,15 @@ To define a gallery, create a subfolder in the OpenStoryTool/images folder. For 
 How to embed the Open Story tool
 To embed the Open Story tool into an activity, create a blank activity page and embed the following code. This will launch the Open Story tool with a blank slideshow and access to the default gallery.
 
+```
 <iframe src="/modules/OpenStoryTool/index.html" style="width:860px; height:600px" frameBorder="0"></iframe>
+```
 
 To specify a starting slideshow and/or a specific gallery, you need to provide the information to the Open Story tool’s code.
 
+```
 <iframe src="/modules/OpenStoryTool/index.html?gallery=birds&file=birds.csst" style="width:860px; height:600px" frameBorder="0"></iframe>
+```
 
 From this example, replace birds.csst with the name of the starting slideshow you want to use.
 That starting file must be in the same folder as the index.html file. If you don’t include the file parameter, Open Story will start with a blank slideshow by default.
