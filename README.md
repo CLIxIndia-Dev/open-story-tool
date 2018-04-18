@@ -113,6 +113,12 @@ Similarly, you can include this setting along with the others by combining them 
 https://www.example.com/openstorytool?cookieName=myUserIdCookie&project=birds.csst&gallery=birds&api=/foo
 ```
 
+#### How to update the cookie name used inline
+If you would like to hardcode in another cookie name to the list of checked cookies, you can fork this repository and edit the `slideshowApp.js` file.
+
+You would make a change near [lines 154-155 to the cookiesToTry variable](https://github.com/CLIxIndia-Dev/open-story-tool/blob/8ad1c8871816fcb9d60b0beddb1f867ca4e603d1/slideshowApp.js#L154-L155), and prepend your cookie name to the list of cookies. An example of such a change can be found in this PR: https://github.com/CLIxIndia-Dev/open-story-tool/pull/16/files
+
+
 ### Embedding
 Open Story can be embedded into an iframe, as outlined in the embedding document:  
 Embedded Open Story Tool
