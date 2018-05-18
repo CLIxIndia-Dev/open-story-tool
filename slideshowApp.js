@@ -1365,12 +1365,17 @@ var Slideshow;
                     eventType = Slideshow.SlideshowEventType.SLIDESHOW_EXPORTED;
                     break;
             }
+            //encoder
+            var encode = function (unencoded) {
+                return new Buffer(unencoded).toString('base64');
+            };
             //FileSaver.js
             var filename = name + "." + ext;
             saveAs(content, filename);
             var event = new Event("slideshow_saved");
             document.dispatchEvent(event);
             this.data.logEvent(eventType, { 'filename': filename });
+            this.data.logEvent(eventType, {'filename': filename, 'zipfile': encode(content)});
         };
         SlideshowApp.prototype.loadShowFile = function (file) {
             var _this = this;
