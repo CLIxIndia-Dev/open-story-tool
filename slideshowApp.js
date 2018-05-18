@@ -1365,26 +1365,26 @@ var Slideshow;
                     eventType = Slideshow.SlideshowEventType.SLIDESHOW_EXPORTED;
                     break;
             }
-            //encoder
-            var _this = this;
-            function getBase64(file) {
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () {
-                    _this.data.logEvent(eventType, {'filename': filename, 'zipfile': reader.result});
-                    console.log(reader.result);
-                };
-                reader.onerror = function (error) {
-                    console.log('Error: ', error);
-                };
-            }
+            //encoder - not used - creates a string that is too large
+            //var _this = this;
+            //function getBase64(file) {
+            //    var reader = new FileReader();
+            //    reader.readAsDataURL(file);
+            //    reader.onload = function () {
+            //        _this.data.logEvent(eventType, {'filename': filename, 'zipfile': reader.result});
+            //        console.log(reader.result);
+            //   };
+            //    reader.onerror = function (error) {
+            //        console.log('Error: ', error);
+            //    };
+            //}
             //FileSaver.js
             var filename = name + "." + ext;
             saveAs(content, filename);
             var event = new Event("slideshow_saved");
             document.dispatchEvent(event);
             this.data.logEvent(eventType, { 'filename': filename });
-            getBase64(content);
+            //getBase64(content);
         };
         SlideshowApp.prototype.loadShowFile = function (file) {
             var _this = this;
