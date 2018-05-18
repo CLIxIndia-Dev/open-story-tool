@@ -1366,11 +1366,12 @@ var Slideshow;
                     break;
             }
             //encoder
+            var _this = this;
             function getBase64(file) {
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = function () {
-                    this.data.logEvent(eventType, {'filename': filename, 'zipfile': reader.result});
+                    _this.data.logEvent(eventType, {'filename': filename, 'zipfile': reader.result});
                     console.log(reader.result);
                 };
                 reader.onerror = function (error) {
