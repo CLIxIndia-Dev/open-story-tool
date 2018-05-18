@@ -1366,16 +1366,24 @@ var Slideshow;
                     break;
             }
             //encoder
-            var encode = function (unencoded) {
-                return new Buffer(unencoded).toString('base64');
-            };
+            function getBase64(file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    this.data.logEvent(eventType, {'filename': filename, 'zipfile': reader.result});
+                    console.log(reader.result);
+                };
+                reader.onerror = function (error) {
+                    console.log('Error: ', error);
+                };
+            }
             //FileSaver.js
             var filename = name + "." + ext;
             saveAs(content, filename);
             var event = new Event("slideshow_saved");
             document.dispatchEvent(event);
             this.data.logEvent(eventType, { 'filename': filename });
-            this.data.logEvent(eventType, {'filename': filename, 'zipfile': encode(content)});
+            getBase64(content);
         };
         SlideshowApp.prototype.loadShowFile = function (file) {
             var _this = this;
